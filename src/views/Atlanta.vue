@@ -18,7 +18,7 @@ export default {
   methods: {
     handleClick() {
       axios
-        .get('https://www.googleapis.com/civicinfo/v2/elections?key=<API_KEY>')
+        .get('https://www.googleapis.com/civicinfo/v2/elections', { params: { key: '<API_KEY>' } })
         .then((response) => {
           this.text = response;
         });
