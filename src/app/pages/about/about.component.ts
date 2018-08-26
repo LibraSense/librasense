@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-about',
@@ -7,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  elections: any;
+
+  constructor(private http: Http) { }
+
+  getData() {
+    this.http
+      .get('https://www.googleapis.com/civicinfo/v2/elections', { params: { key: 'API-KEY' } })
+      .subscribe(response => {
+        
+        let data = response.json();
+        console.log(data);
+        
+        this.elections = data.elections;
+        
+        
+      })
+  }
 
   ngOnInit() {
   }

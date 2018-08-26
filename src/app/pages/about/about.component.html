@@ -1,3 +1,5 @@
-<p>
-  about works!
-</p>
+<button type="button" (click)="getData()">Get Data</button>
+<br>
+
+<p *ngFor="let election of elections">Name: {{ election.name }}, Data: {{ election.electionDay }}</p>
+{{ data }}
